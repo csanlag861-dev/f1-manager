@@ -7,6 +7,8 @@ import { useGameStore } from '../../application/store/gameStore';
 import { Header } from '../../presentation/components/Header';
 import { getFinancialOverview } from '../../domain/economy';
 import { FinancialPanel } from '../../presentation/components/FinancialPanel';
+import { FactoryPanel } from '../../presentation/components/FactoryPanel';
+import { SeasonTransitionModal } from '../../presentation/components/SeasonTransitionModal';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -45,6 +47,11 @@ export default function DashboardPage() {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header />
 
+      {/* Season Transition Modal (AC-08.1 to AC-08.6) */}
+      {gameState.seasonTransitionSummary && (
+        <SeasonTransitionModal summary={gameState.seasonTransitionSummary} />
+      )}
+
       <main style={{ flex: 1, padding: '2rem', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
         {/* Top Hero Banner */}
         <div className="f1-card" style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
@@ -58,6 +65,16 @@ export default function DashboardPage() {
                   QUIEBRA FINANCIERA (GAME OVER)
                 </span>
               )}
+              {gameState.isGameOver && gameState.gameOverReason === 'dismissal_no_offers' && (
+                <span id="dashboard-dismissal-badge" className="f1-badge f1-badge-red" style={{ fontWeight: 800 }}>
+                  DESTITUCIÓN SIN OFERTAS (GAME OVER)
+                </span>
+              )}
+              {gameState.isCareerCompleted && (
+                <span id="dashboard-legacy-badge" className="f1-badge f1-badge-gold" style={{ fontWeight: 800 }}>
+                  10 TEMPORADAS COMPLETADAS (LEGADO)
+                </span>
+              )}
             </div>
             <h1 style={{ fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '0.25rem' }}>
               {team?.name}
@@ -68,7 +85,16 @@ export default function DashboardPage() {
           </div>
 
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            {gameState.isBankrupt ? (
+            {gameState.isCareerCompleted ? (
+              <Link
+                id="career-legacy-btn"
+                href="/legacy"
+                className="f1-btn f1-btn-primary"
+                style={{ padding: '1rem 2.25rem', fontSize: '1rem', border: '1px solid var(--accent-gold)' }}
+              >
+                Ver Pantalla de Legado
+              </Link>
+            ) : gameState.isBankrupt || gameState.isGameOver ? (
               <Link
                 id="bankruptcy-new-game-btn"
                 href="/new-game"
@@ -153,6 +179,9 @@ export default function DashboardPage() {
           </div>
 
         </div>
+
+        {/* Factory & Car Development Panel (AC-03.1 - AC-03.6) */}
+        {team && car && <FactoryPanel team={team} car={car} engineer={engineer} />}
 
         {/* Financial Control Panel (AC-02.1) */}
         {financialOverview && <FinancialPanel overview={financialOverview} />}

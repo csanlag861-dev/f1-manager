@@ -11,4 +11,6 @@ export interface ManagerProfile {
   tpRating: number; // 0 to 100
   seasonsCompleted: number;
   trophyCabinet: TrophyCabinet;
+  teamsManaged?: string[];
+  honoraryTitle?: string;
 }

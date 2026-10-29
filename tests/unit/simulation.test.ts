@@ -54,8 +54,8 @@ describe('Tarea 1.3: Motor Básico de Simulación (AC-06.1, AC-06.6)', () => {
   });
 
   it('debe reflejar coherencia estadística donde equipos y pilotos top clasifican arriba en Qualy', () => {
-    // Run with 0 noise to verify pure stat ranking
-    const zeroNoiseConfig = { ...defaultSimulationConfig, qualyRandomSigma: 0 };
+    // Run with 0 noise and 0 incident factor to verify pure stat ranking
+    const zeroNoiseConfig = { ...defaultSimulationConfig, qualyRandomSigma: 0, qualyIncidentFactor: 0 };
     const qualyResults = simulateQualySession(
       INITIAL_DRIVERS,
       INITIAL_TEAMS,

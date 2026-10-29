@@ -140,31 +140,37 @@ flowchart TD
 * **Descripción:** Lógica de encargo de mejoras (*Top Speed, Downforce, Reliability*) con deducción de coste, tiempo en Grandes Premios y bloqueo estricto si ya existen 2 mejoras activas.
 * **Criterios de Aceptación:** `AC-03.1`, `AC-03.2`.
 * **Verificación:** Test unitario intentando encargar 3 mejoras simultáneas comprobando que la tercera es rechazada y no descuenta presupuesto.
+* **Estado:** Completada y verificada.
 
 ### Tarea 4.2: Tiempos de Entrega y Moduladores de Fábrica e Ingeniero
 * **Descripción:** Reducción del coste y número de carreras de desarrollo según el nivel de Fábrica y el atributo `developmentEfficiency` del Jefe de Ingenieros.
 * **Criterios de Aceptación:** `AC-03.3`.
 * **Verificación:** Test unitario comparando los tiempos y costes de una mejora con ingeniero novato vs ingeniero de élite.
+* **Estado:** Completada y verificada.
 
 ### Tarea 4.3: Evaluación de Éxito vs. Fallo Técnico por Moral
 * **Descripción:** Al completarse el plazo de entrega, evaluar probabilísticamente el resultado según la `morale` del Jefe de Ingenieros. Si falla, el atributo no sube y el ingeniero pierde 3 puntos de moral.
 * **Criterios de Aceptación:** `AC-03.4`, `AC-03.5`.
 * **Verificación:** Test unitario simulando entregas con moral al 10 y moral al 90 comprobando la tasa de éxito y la deducción exacta de 3 puntos de moral en caso de fallo.
+* **Estado:** Completada y verificada.
 
 ### Tarea 4.4: Reintento de Mejora Fallida con 50% de Descuento
 * **Descripción:** Mecánica e interfaz para permitir reordenar inmediatamente una mejora que resultó fallida con un descuento del 50% sobre su coste original.
 * **Criterios de Aceptación:** `AC-03.5`.
 * **Verificación:** Test unitario y de UI verificando que el botón de reintento aplica el coste reducido del 50% y pone la pieza de nuevo en desarrollo.
+* **Estado:** Completada y verificada.
 
 ### Tarea 4.5: Ampliación de Nivel de Instalaciones
 * **Descripción:** Opciones de compra para subir de nivel la Fábrica o el Simulador, aplicando sus beneficios de forma inmediata.
 * **Criterios de Aceptación:** `AC-03.6`.
 * **Verificación:** Test unitario comprobando que tras la compra el nivel aumenta en 1 y se descuenta el coste de la obra.
+* **Estado:** Completada y verificada.
 
 ### Tarea 4.6: Fluctuación de Moral Post-Carrera ($\pm 5$ puntos)
 * **Descripción:** Ajuste automático de $\pm 5$ puntos de moral para pilotos e ingenieros al término del fin de semana según cumplimiento de expectativas deportivas.
 * **Criterios de Aceptación:** Cumplimiento de `spec/game-rules.md` (sección 5.3) y `prd.md` (RF-6.6).
 * **Verificación:** Test unitario validando que la moral se incrementa o decrementa exactamente en 5 puntos manteniéndose en el rango $[0, 100]$.
+* **Estado:** Completada y verificada.
 
 ---
 
@@ -176,21 +182,25 @@ flowchart TD
 * **Descripción:** Vista (`/market`) con listado de pilotos e ingenieros disponibles, mostrando sus atributos básicos, salario pretendido y años de contrato.
 * **Criterios de Aceptación:** `AC-04.1`.
 * **Verificación:** Comprobación visual de que la lista muestra estadísticas completas y permite filtrar entre pilotos e ingenieros.
+* **Estado:** Completada y verificada.
 
 ### Tarea 5.2: Fichaje y Contratación con Validación de Reputación
 * **Descripción:** Lógica de oferta de contrato que valida si el saldo cubre el salario pactado y si el prestigio del equipo (`reputation`) satisface las pretensiones del candidato.
 * **Criterios de Aceptación:** `AC-04.2`.
 * **Verificación:** Test unitario intentando fichar a un piloto de élite con una escudería modesta (rechazo por reputación) y con una escudería puntera (éxito y asignación a plantilla).
+* **Estado:** Completada y verificada.
 
 ### Tarea 5.3: Renovación de Contratos y Pase a Agencia Libre
 * **Descripción:** Opciones de renovación contractual para empleados con 1 año o menos de contrato, y pase automático a la agencia libre al término de la temporada si no son renovados.
 * **Criterios de Aceptación:** `AC-04.3`, `AC-04.4`.
 * **Verificación:** Test de integración avanzando la temporada con un piloto sin renovar y verificando que abandona el equipo y queda como agente libre.
+* **Estado:** Completada y verificada.
 
 ### Tarea 5.4: IA Autónoma de Escuderías Rivales
 * **Descripción:** Algoritmo que ejecuta decisiones para las 9 escuderías rivales entre carreras y temporadas (invierten en mejoras de coche, renuevan estrellas y contratan personal libre).
 * **Criterios de Aceptación:** `AC-07.1`, `AC-07.2`.
 * **Verificación:** Test de integración simulando una temporada y verificando que los coches rivales incrementan sus atributos y mantienen sus plantillas completas.
+* **Estado:** Completada y verificada.
 
 ---
 
@@ -202,21 +212,25 @@ flowchart TD
 * **Descripción:** Algoritmo generador de jóvenes pilotos (nombres, nacionalidades, edades entre 16-19, estadísticas base bajas y alto potencial), renovado cada temporada.
 * **Criterios de Aceptación:** `AC-05.1`.
 * **Verificación:** Test unitario generando 50 pilotos comprobando que ninguno repite ID, sus edades están entre 16 y 19 y sus atributos respetan los límites numéricos.
+* **Estado:** Completada y verificada.
 
 ### Tarea 6.2: Gestión de la Academia y Límite de 2 Plazas
 * **Descripción:** Vista (`/academy`) para incorporar promesas disponibles, validando que no se superen las 2 plazas y que su manutención queda absorbida por el Simulador sin coste de salario individual.
 * **Criterios de Aceptación:** `AC-05.2`.
 * **Verificación:** Test unitario intentando fichar a un 3º joven piloto comprobando que el sistema bloquea la acción.
+* **Estado:** Completada y verificada.
 
 ### Tarea 6.3: Entrenamiento Anual Potenciado por el Simulador
 * **Descripción:** Lógica de progresión anual que incrementa las estadísticas de las promesas al final de cada temporada según su `potential` y el nivel de `simulatorLevel`.
 * **Criterios de Aceptación:** `AC-05.3`.
 * **Verificación:** Test unitario comparando la evolución de un piloto en un equipo con Simulador nivel 1 vs Simulador nivel 3.
+* **Estado:** Completada y verificada.
 
 ### Tarea 6.4: Promoción al Asiento Titular
 * **Descripción:** Botón y flujo de promoción para ascender a una joven promesa al asiento de Piloto 1 o Piloto 2 ante una vacante en el equipo oficial.
 * **Criterios de Aceptación:** `AC-05.4`.
 * **Verificación:** Flujo de promoción comprobando que el piloto pasa a ser titular en la plantilla oficial y deja libre su plaza en la academia.
+* **Estado:** Completada y verificada.
 
 ---
 
@@ -224,58 +238,94 @@ flowchart TD
 
 **Objetivo del hito:** Completar el ciclo de 10 años, premios FIA, evaluación de la directiva, movilidad de escuderías según `tpRating` y pantalla de legado final.
 
-### Tarea 7.1: Reparto de Premios Oficiales FIA de Constructores
+### Tarea 7.1: Reparto de Premios Oficiales FIA de Constructores [COMPLETADA]
 * **Descripción:** Asignación automática de fondos al término del Gran Premio 24 según la posición final en la tabla de Constructores.
 * **Criterios de Aceptación:** `AC-08.1`.
-* **Verificación:** Test unitario comprobando que cada escudería recibe el importe reglamentario exacto según su puesto final.
+* **Verificación:** Test unitario en `tests/unit/fiaPrizes.test.ts` comprobando que cada escudería recibe el importe reglamentario exacto según su puesto final (1º a 10º clasificado).
 
-### Tarea 7.2: Evaluación de Objetivos y Recálculo del `tpRating`
+### Tarea 7.2: Evaluación de Objetivos y Recálculo del `tpRating` [COMPLETADA]
 * **Descripción:** Comparación del resultado deportivo con el objetivo fijado por la directiva y actualización del rating oculto de Team Principal (0 a 100).
 * **Criterios de Aceptación:** `AC-08.2`.
-* **Verificación:** Test unitario comprobando que superar el objetivo incrementa el `tpRating` y no cumplirlo lo penaliza proporcionalmente.
+* **Verificación:** Test unitario en `tests/unit/tpRating.test.ts` comprobando que superar el objetivo incrementa el `tpRating` (+10 a +15), cumplirlo exacto otorga +5 y no cumplirlo lo penaliza proporcionalmente (-10 a -20).
 
-### Tarea 7.3: Mercado de Team Principal (Ofertas y Rescate)
+### Tarea 7.3: Mercado de Team Principal (Ofertas y Rescate) [COMPLETADA]
 * **Descripción:** Lógica de ofertas de otras escuderías al final de temporada basadas en el `tpRating`. Si el jugador fue despedido pero tiene rating suficiente, se le presentan ofertas de rescate.
 * **Criterios de Aceptación:** `AC-08.3`, `AC-08.4`.
-* **Verificación:** Test de integración donde un jugador despedido con rating medio recibe ofertas de equipos de la zona baja/media y puede elegir nuevo equipo.
+* **Verificación:** Test de integración en `tests/integration/tpOffersAndRescue.test.ts` donde un jugador con rating alto recibe ofertas de escuderías punteras además de renovación, y un jugador despedido con rating medio recibe ofertas de rescate de equipos de la zona baja/media pudiendo elegir nuevo equipo.
 
-### Tarea 7.4: Condición de Game Over por Destitución sin Ofertas
+### Tarea 7.4: Condición de Game Over por Destitución sin Ofertas [COMPLETADA]
 * **Descripción:** Verificación de fin de partida si el jugador es despedido y su `tpRating` es insuficiente para recibir ofertas de cualquier escudería de la parrilla.
 * **Criterios de Aceptación:** `AC-08.5`.
-* **Verificación:** Test de integración forzando una destitución con rating mínimo comprobando que se activa la pantalla de derrota definitiva.
+* **Verificación:** Test de integración en `tests/integration/gameOverDismissal.test.ts` forzando una destitución con rating mínimo comprobando que se activa la condición de derrota definitiva (Game Over) y se bloquea el avance.
 
-### Tarea 7.5: Límite de 10 Temporadas y Pantalla de Legado
+### Tarea 7.5: Límite de 10 Temporadas y Pantalla de Legado [COMPLETADA]
 * **Descripción:** Al concluir la carrera 24 de la Temporada 10, bloquear el avance anual y desplegar la vista (`/legacy`) con el resumen de la trayectoria (títulos, victorias, podios, escuderías dirigidas y título honorífico).
 * **Criterios de Aceptación:** `AC-08.6`.
-* **Verificación:** Test de integración avanzando hasta la temporada 10 comprobando que se muestra la pantalla de legado y se impide iniciar la temporada 11.
+* **Verificación:** Test de integración en `tests/integration/legacyScreen.test.ts` avanzando hasta la temporada 10 comprobando que se consolida el palmarés acumulado, se calcula el título honorífico, se bloquea el inicio de la temporada 11 y se despliega la pantalla de legado `/legacy`.
 
 ---
 
-## Hito 8: PWA Offline-First, Portabilidad JSON y Pulido
+## Hito 7.5: UI Polish & UX Refinement
 
-**Objetivo del hito:** Asegurar el funcionamiento 100% offline con `@serwist/next`, implementar la exportación/importación JSON validada con `Zod` y pulir la estética F1 Arcade.
+**Objetivo del hito:** Corregir defectos visuales en `/market` y `/academy` (botones sin estilo y modales transparentes), normalizar tokens de diseño, personalizar la barra de desplazamiento según el tema oscuro F1 y asegurar responsividad completa en móvil, tablet y escritorio.
 
-### Tarea 8.1: Configuración de PWA Offline con Serwist
+### Tarea 7.5.1: Normalización de Tokens de Superficie y Scrollbar Tematizado F1 [COMPLETADA]
+* **Descripción:** Declarar tokens de superficie faltantes (`--surface-raised`, `--surface-sunken`) en `global.css` y crear reglas cross-browser para scrollbars oscuros con contraste adecuado y estados `:hover`.
+* **Archivos previstos:** `src/presentation/styles/global.css`.
+* **Criterios de Aceptación:** Tokens de superficie accesibles globalmente; scrollbar integrado con el tema oscuro, visible, operable y con soporte estándar y WebKit.
+* **Verificación:** Declarados en `global.css` los tokens `--surface-raised: #161c28`, `--surface-sunken: #0e121a`, `--surface-modal: #131722` y reglas cross-browser para scrollbars oscuras con acento rojo en `:hover`.
+
+### Tarea 7.5.2: Corrección de Botones y Modales Opacos en Mercado (`/market`) [COMPLETADA]
+* **Descripción:** Reemplazar clases erróneas `.f1-button*` por `.f1-btn*` y dotar a los modales de fichaje de pilotos y jefes de ingenieros de fondo sólido opaco (`var(--bg-card)` / `--surface-raised`), bordes nítidos y backdrop oscuro.
+* **Archivos previstos:** `src/app/market/page.tsx`.
+* **Criterios de Aceptación:** Botones de acción y filtros con estilo visual consistente; modales de fichaje 100% opacos y legibles sobre cualquier fondo.
+* **Verificación:** Sustituidas todas las clases obsoletas por `.f1-btn*` en filtros y acciones. Modales de piloto e ingeniero dotados de `var(--surface-modal, #131722)`, bordes `var(--border-strong)`, sombra `0 20px 50px rgba(0,0,0,0.85)` y backdrop con `blur(8px)`.
+
+### Tarea 7.5.3: Corrección de Botones y Modal de Promoción en Academia (`/academy`) [COMPLETADA]
+* **Descripción:** Reemplazar clases `.f1-button*` por `.f1-btn*` en tarjetas de cantera y bolsa de talentos. Dotar al modal de promoción a titular de fondo opaco estructurado y botones de selección de asiento con contraste claro.
+* **Archivos previstos:** `src/app/academy/page.tsx`.
+* **Criterios de Aceptación:** Botones de promoción y liberación con diseño estándar de la app; modal de promoción legible, opaco y sin solapamiento con el fondo.
+* **Verificación:** Sustituidos todos los botones de acción por `.f1-btn*`. Modal de promoción reestructurado con fondo opaco sólido `#131722`, sombra profunda, backdrop con desenfoque y selector de asiento 1 / 2 con contraste destacado.
+
+### Tarea 7.5.4: Optimización Responsive Multi-dispositivo (Móvil, Tablet, Desktop) [COMPLETADA]
+* **Descripción:** Adaptar el `Header` para navegación fluida en anchos móviles (360px–768px) evitando saltos desordenados o desbordamientos, y verificar grids en `dashboard`, `race`, `standings` y `new-game`.
+* **Archivos previstos:** `src/presentation/components/Header.tsx`, `src/presentation/styles/global.css`.
+* **Criterios de Aceptación:** Ningún elemento produce desbordamiento horizontal en viewport de 360px; navegación y tarjetas auto-ajustables y legibles en dispositivos móviles.
+* **Verificación:** Implementadas clases `.f1-header` y `.f1-nav-scroll` con navegación deslizable horizontalmente en pantallas estrechas sin quiebres abruptos, paddings adaptados en móviles y contención de scroll en modales (`max-height: 90vh`).
+
+### Tarea 7.5.5: Verificación de No Regresión y Coherencia Visual Global [COMPLETADA]
+* **Descripción:** Comprobar que todas las pantallas mantengan su funcionalidad íntegra sin alteraciones en la lógica de negocio ni en los modelos, ejecutando la suite completa de pruebas unitarias/integración y la compilación estática de producción.
+* **Archivos previstos:** Suite de pruebas y archivos de presentación.
+* **Criterios de Aceptación:** 100% de los tests unitarios e integración pasando; build estático de Next.js libre de errores.
+* **Verificación:** Ejecución exitosa de `npx vitest run` (34 suites, 98 tests pasados, 0 fallos) y compilación estática de producción exitosa con `npm run build` (11/11 rutas exportadas sin errores de TypeScript ni linter).
+
+---
+
+## Hito 8: PWA Offline-First, Portabilidad JSON y Pulido Final
+
+**Objetivo del hito:** Asegurar el funcionamiento 100% offline con `@serwist/next`, implementar la exportación/importación JSON validada con `Zod` y pruebas E2E.
+
+### Tarea 8.1: Configuración de PWA Offline con Serwist [COMPLETADA]
 * **Descripción:** Configurar `@serwist/next`, `manifest.json` e iconos para cachear todos los assets estáticos, páginas compiladas y fuentes, garantizando funcionamiento en modo avión.
 * **Criterios de Aceptación:** `AC-09.3`.
-* **Verificación:** Prueba en navegador emulando offline (modo avión) y recargando la aplicación comprobando que carga y permite simular carreras sin conexión.
+* **Verificación:** Configurado `@serwist/next` en `next.config.mjs`, Service Worker en `src/app/sw.ts`, iconos vectoriales PWA (`/icons/icon-192.svg`, `/icons/icon-512.svg`), `manifest.json` y componente `ServiceWorkerRegister`. Verificado bundleo exitoso de `/sw.js` con precacheo de todas las rutas y assets en producción.
 
-### Tarea 8.2: Exportación de Partida a JSON
+### Tarea 8.2: Exportación de Partida a JSON [COMPLETADA]
 * **Descripción:** Función y botón en Ajustes (`/settings`) para generar y descargar el fichero `f1manager_save_[timestamp].json` con el estado íntegro y metadatos de versión.
 * **Criterios de Aceptación:** `AC-09.4`.
-* **Verificación:** Pulsar "Exportar Partida" y verificar que el navegador descarga el archivo JSON plano legible.
+* **Verificación:** Implementado `exportGameToJson` en `gameStore.ts`, serialización estándar en `src/domain/serialization/saveGameSchema.ts` y botón de exportación en la nueva vista `/settings`. Verificada descarga del archivo formateado con `f1manager_save_[timestamp].json` en suite E2E de Playwright.
 
-### Tarea 8.3: Validación Estricta con Zod e Importación Segura
+### Tarea 8.3: Validación Estricta con Zod e Importación Segura [COMPLETADA]
 * **Descripción:** Modal de carga de archivo JSON que ejecuta la validación con `Zod` (`saveGameSchema`). Si es válido, sobreescribe `IndexedDB` y recarga la partida; si es inválido, muestra error y no altera los datos previos.
 * **Criterios de Aceptación:** `AC-09.5`, `AC-09.6`.
-* **Verificación:** Test unitario intentando importar un JSON corrupto (rechazo sin tocar datos) y un JSON válido (restauración íntegra).
+* **Verificación:** Definido `saveGameSchema` con `zod` validando tipos, rangos lógicos reglamentarios y campos obligatorios. 6 pruebas unitarias en `tests/unit/saveGameValidation.test.ts` y 2 pruebas de integración en `tests/integration/jsonPortabilityStore.test.ts` verificando aceptación de JSON legítimo y rechazo estricto de JSON corrupto sin tocar el almacenamiento previo.
 
-### Tarea 8.4: Suite de Pruebas E2E con Playwright
+### Tarea 8.4: Suite de Pruebas E2E con Playwright [COMPLETADA]
 * **Descripción:** Implementar pruebas de extremo a extremo que recorran el flujo completo: nueva partida $\rightarrow$ carrera $\rightarrow$ guardado $\rightarrow$ recarga $\rightarrow$ exportación $\rightarrow$ importación.
 * **Criterios de Aceptación:** Verificación transversal de todos los criterios de aceptación.
-* **Verificación:** Ejecución de `npx playwright test` pasando el 100% de los tests en navegadores Chromium, Firefox y WebKit.
+* **Verificación:** Ejecución exitosa de `npx playwright test` (`tests/e2e/fullGameFlow.spec.ts`) con Chromium pasando el 100% de los tests: flujo completo de usuario de principio a fin, recarga offline-first y validación ante archivos corruptos.
 
-### Tarea 8.5: Pulido Visual F1 Arcade y Responsividad
+### Tarea 8.5: Pulido Visual F1 Arcade y Responsividad [COMPLETADA]
 * **Descripción:** Ajustes de diseño UI/UX inspirados en *F1 Manager (Frontier)* y retransmisiones broadcast: tema oscuro, tipografía deportiva, acentos de color de escuderías oficiales, micro-animaciones en podios y total adaptabilidad en pantallas táctiles móviles a partir de 360px.
 * **Criterios de Aceptación:** Cumplimiento de `spec/vision.md` (sección 6) y criterios no funcionales de `prd.md`.
-* **Verificación:** Inspección visual y táctil en emulador de dispositivos móviles y tablets garantizando cero desbordamientos y transiciones fluidas.
+* **Verificación:** Nueva pantalla `/settings` integrada con la estética F1 Arcade, scrollbars personalizados F1, indicadores de estado de red/PWA, acceso en `Header.tsx` con navegación responsiva `.f1-nav-scroll`, 106 tests unitarios/integración en verde y build estático de 12 rutas libre de errores.

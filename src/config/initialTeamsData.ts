@@ -1,4 +1,5 @@
 import { Team, Driver, ChiefEngineer, Car, Circuit, GameState } from '../domain/models';
+import { generateYouthDriverPool } from '../domain/academy';
 
 export const INITIAL_DRIVERS: Driver[] = [
   // Red Bull
@@ -368,7 +369,7 @@ export function createInitialGameState(playerTeamId: string, managerName = 'Team
     chiefEngineers: JSON.parse(JSON.stringify(INITIAL_CHIEF_ENGINEERS)),
     cars: JSON.parse(JSON.stringify(INITIAL_CARS)),
     circuits: JSON.parse(JSON.stringify(OFFICIAL_CIRCUITS)),
-    youthDrivers: [],
+    youthDrivers: generateYouthDriverPool(8, 1),
     lastRaceResult: null,
     updatedAt: new Date().toISOString(),
   };

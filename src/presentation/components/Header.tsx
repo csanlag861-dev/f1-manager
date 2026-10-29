@@ -38,7 +38,7 @@ export function Header() {
   const currentCircuit = gameState.circuits[gameState.season.currentRaceIndex];
 
   return (
-    <header style={{
+    <header className="f1-header" style={{
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -50,10 +50,10 @@ export function Header() {
       top: 0,
       zIndex: 50,
       flexWrap: 'wrap',
-      gap: '1rem',
+      gap: '0.75rem',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-        <Link href="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap', maxWidth: '100%' }}>
+        <Link href="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexShrink: 0 }}>
           <div style={{
             width: '10px',
             height: '22px',
@@ -66,21 +66,40 @@ export function Header() {
           </span>
         </Link>
 
-        <nav style={{ display: 'flex', gap: '1rem', fontSize: '0.875rem', fontWeight: 600 }}>
-          <Link href="/dashboard" style={{ color: 'var(--text-main)', opacity: 0.9 }}>
+        <nav className="f1-nav-scroll" style={{
+          display: 'flex',
+          gap: '1rem',
+          fontSize: '0.875rem',
+          fontWeight: 600,
+          alignItems: 'center',
+          maxWidth: '100%',
+        }}>
+          <Link href="/dashboard" style={{ color: 'var(--text-main)', opacity: 0.9, flexShrink: 0 }}>
             Panel Principal
           </Link>
-          <Link href="/standings" style={{ color: 'var(--text-main)', opacity: 0.9 }}>
+          <Link href="/market" style={{ color: 'var(--text-main)', opacity: 0.9, flexShrink: 0 }}>
+            Mercado
+          </Link>
+          <Link href="/academy" style={{ color: 'var(--text-main)', opacity: 0.9, flexShrink: 0 }}>
+            Academia
+          </Link>
+          <Link href="/standings" style={{ color: 'var(--text-main)', opacity: 0.9, flexShrink: 0 }}>
             Clasificación
           </Link>
-          <Link href="/race" style={{ color: 'var(--accent-red)', fontWeight: 700 }}>
+          <Link href="/legacy" style={{ color: gameState.isCareerCompleted ? 'var(--accent-gold)' : 'var(--text-main)', opacity: 0.9, flexShrink: 0 }}>
+            Legado
+          </Link>
+          <Link href="/settings" style={{ color: 'var(--text-main)', opacity: 0.9, flexShrink: 0 }}>
+            Ajustes
+          </Link>
+          <Link href="/race" style={{ color: 'var(--accent-red)', fontWeight: 700, flexShrink: 0 }}>
             Fin de Semana GP
           </Link>
         </nav>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', fontSize: '0.875rem' }}>
-        <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.875rem', flexWrap: 'wrap' }}>
+        <div style={{ whiteSpace: 'nowrap' }}>
           <span style={{ color: 'var(--text-muted)' }}>Temporada: </span>
           <strong style={{ color: 'var(--text-main)' }}>{gameState.season.seasonNumber}</strong>
           <span style={{ color: 'var(--text-dim)', margin: '0 0.5rem' }}>|</span>
@@ -91,7 +110,7 @@ export function Header() {
         </div>
 
         {currentCircuit && (
-          <div className="f1-badge f1-badge-gold" style={{ fontSize: '0.75rem' }}>
+          <div className="f1-badge f1-badge-gold" style={{ fontSize: '0.75rem', whiteSpace: 'nowrap' }}>
             {currentCircuit.name}
           </div>
         )}
@@ -103,6 +122,7 @@ export function Header() {
           borderRadius: 'var(--radius-sm)',
           color: 'var(--accent-green)',
           fontWeight: 700,
+          whiteSpace: 'nowrap',
         }}>
           ${((currentTeam?.budget ?? 0) / 1000000).toFixed(1)}M
         </div>

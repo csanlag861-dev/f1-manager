@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="36" fill="#0a0c10" />
+  <rect x="24" y="24" width="144" height="144" rx="24" fill="#161c28" stroke="#e10600" stroke-width="4" />
+  <!-- F1 racing accent stripes -->
+  <polygon points="50,140 70,52 90,52 70,140" fill="#e10600" />
+  <polygon points="85,140 105,52 118,52 98,140" fill="#ffffff" />
+  <!-- Text F1 -->
+  <text x="126" y="115" font-family="system-ui, sans-serif" font-weight="900" font-style="italic" font-size="44" fill="#ffffff" text-anchor="middle">F1</text>
+</svg>

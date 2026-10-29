@@ -1,0 +1,24 @@
+{
+  "name": "F1 Manager Arcade",
+  "short_name": "F1 Manager",
+  "description": "Simulador táctico y arcade de gestión de Fórmula 1 en el navegador",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0c10",
+  "theme_color": "#e10600",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
